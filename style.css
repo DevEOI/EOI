@@ -1,0 +1,274 @@
+/* --- Import Font Fantasi --- */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+body {
+    font-family: 'Cinzel', serif;
+    background-color: #1a1a1a;
+    color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#game-container {
+    width: 800px;
+    height: 600px;
+    background: radial-gradient(ellipse at center, #2c3e50 0%, #000000 100%);
+    border: 2px solid #a07c34;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 25px rgba(0,0,0,0.8);
+}
+
+.screen {
+    display: none;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.screen.active {
+    display: flex;
+}
+
+/* --- Tombol (Gaya Default Baru) --- */
+button {
+    font-family: 'Cinzel', serif;
+    background-color: #3a3a3a;
+    border: 1px solid #888;
+    color: #eee;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+    text-shadow: 1px 1px 1px #000;
+}
+
+button:hover {
+    background-color: #555;
+    border-color: #aaa;
+}
+
+button:disabled {
+    background-color: #222;
+    color: #666;
+    border-color: #444;
+    cursor: not-allowed;
+}
+
+/* --- Gaya Layar Utama (Homescreen) --- */
+#main-menu-screen {
+    justify-content: center;
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+#main-menu-screen h1 {
+    font-size: 4.5em;
+    font-weight: 700;
+    color: #f0e6d2;
+    letter-spacing: 5px;
+    text-shadow: 2px 2px 2px #000, 0 0 15px #f0e6d2a0;
+    margin-top: 0;
+    margin-bottom: 50px;
+}
+
+#main-menu-screen button {
+    font-size: 1.5em;
+    font-weight: 700;
+    padding: 15px 40px;
+    margin: 10px;
+    width: 250px;
+    color: #f0e6d2;
+    background-color: transparent;
+    border: 2px solid #a07c34;
+    box-shadow: 0 0 10px rgba(160, 124, 52, 0.5);
+    transform: scale(1);
+}
+
+#main-menu-screen button:hover {
+    background-color: #a07c34;
+    color: #1a1a1a;
+    border-color: #a07c34;
+    box-shadow: 0 0 20px rgba(240, 230, 210, 0.7);
+    transform: scale(1.05);
+}
+
+/* --- Tombol Musik --- */
+.music-btn {
+    position: absolute !important;
+    bottom: 20px;
+    right: 20px;
+    width: auto !important;
+    padding: 8px 15px !important;
+    font-size: 12px !important;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    border: 1px solid #a07c34 !important;
+    color: #aaa !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+.music-btn:hover {
+    background-color: #a07c34 !important;
+    color: #111 !important;
+    transform: scale(1.05) !important;
+}
+
+/* --- Gaya Layar Lain --- */
+h1, h2 {
+    text-align: center;
+    color: #eee;
+    font-weight: 700;
+}
+
+/* Pemilihan Class */
+.class-options {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.class-card {
+    border: 2px solid #888;
+    padding: 15px;
+    width: 22%;
+    cursor: pointer;
+    background-color: #444;
+    transition: background-color 0.3s;
+    border-radius: 5px;
+}
+
+.class-card:hover {
+    background-color: #5a5a5a;
+    border-color: #a07c34;
+}
+
+/* Pertarungan */
+.combat-arena {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.combatant {
+    width: 45%;
+    text-align: center;
+}
+
+.image-placeholder {
+    width: 150px;
+    height: 150px;
+    background-color: #ccc;
+    border: 1px solid #888;
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+}
+
+/* Fix gambar/gif oversize */
+.image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#combat-log {
+    width: 100%;
+    height: 100px;
+    border: 1px solid #666;
+    background-color: #2a2a2a;
+    overflow-y: scroll;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-family: Arial, sans-serif;
+}
+
+#combat-log p {
+    margin: 0 0 5px 0;
+    font-size: 14px;
+}
+
+#combat-actions, #magic-menu {
+    display: flex;
+    justify-content: center;
+}
+
+/* Modal (Inventory & Stats) */
+.modal-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #444;
+    padding: 20px;
+    border: 2px solid #888;
+    width: 80%;
+    max-height: 80%;
+    overflow-y: auto;
+    border-radius: 5px;
+}
+
+/* Inventory */
+.inventory-layout {
+    display: flex;
+    justify-content: space-between;
+}
+
+.equipment-slots {
+    width: 40%;
+}
+
+.inventory-bag {
+    width: 55%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 10px;
+}
+
+.slot, .item-slot {
+    width: 60px;
+    height: 60px;
+    border: 1px solid #888;
+    background-color: #555;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.item-slot img, .slot img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+/* Stats */
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.btn-add-stat {
+    padding: 2px 8px;
+    font-size: 14px;
+}

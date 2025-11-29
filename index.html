@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empire of Isle</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="game-container">
+
+        <audio id="bg-music" loop>
+            <source src="images/medieval.mp3" type="audio/mpeg">
+            Browser Anda tidak mendukung elemen audio.
+        </audio>
+
+        <div id="prologue-screen" class="screen">
+            <h1>Empire of Isle</h1>
+            <p>Di dunia yang dilupakan waktu, sebuah kepulauan bernama "Isle" mengapung di lautan awan. Legenda mengatakan, di pusatnya, sebuah kerajaan kuno menyimpan kekuatan untuk membentuk kenyataan. Namun, kerajaan itu telah lama runtuh, dikuasai oleh makhluk-makhluk kegelapan. Sekarang, takdir memanggilmu...</p>
+            <button id="btn-continue-prologue">Lanjutkan</button>
+        </div>
+
+        <div id="main-menu-screen" class="screen active">
+            <h1>Empire of Isle</h1>
+            <button id="btn-start">Start Game</button>
+            <button id="btn-load" style="display: none;">Load Game</button>
+            
+            <button id="btn-music-toggle" class="music-btn">Music: OFF</button>
+        </div>
+
+        <div id="class-selection-screen" class="screen">
+            <h2>Pilih Class Anda</h2>
+            <div class="class-options">
+                <div class="class-card" data-class="Knight">
+                    <h3>Knight</h3>
+                    <p>Fokus pada serangan. Memulai dengan Long Sword.</p>
+                    <p>Stats: STR (15), END (10), SPD (5), MAG (5)</p>
+                </div>
+                <div class="class-card" data-class="Outlander">
+                    <h3>Outlander</h3>
+                    <p>Fokus pada pertahanan. Memulai dengan Short Sword & Wooden Buckler.</p>
+                    <p>Stats: STR (10), END (15), SPD (5), MAG (5)</p>
+                </div>
+                <div class="class-card" data-class="Mercenary">
+                    <h3>Mercenary</h3>
+                    <p>Fokus pada kecepatan. Memulai dengan dua Dagger.</p>
+                    <p>Stats: STR (10), END (5), SPD (15), MAG (5)</p>
+                </div>
+                <div class="class-card" data-class="Priest">
+                    <h3>Priest</h3>
+                    <p>Fokus pada sihir. Memulai dengan Wooden Staff.</p>
+                    <p>Stats: STR (5), END (5), SPD (5), MAG (15)</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="combat-screen" class="screen">
+            <div class="combat-arena">
+                <div class="combatant" id="player-combat-display">
+                    <h2 id="player-name">Player</h2>
+                    <div id="player-image" class="image-placeholder">
+
+[Image of Player]
+</div>
+                    <p>HP: <span id="player-hp">100</span> / <span id="player-max-hp">100</span></p>
+                    <p>MP: <span id="player-mp">50</span> / <span id="player-max-mp">50</span></p>
+                    <p>SP: <span id="player-sp">100</span> / <span id="player-max-sp">100</span></p>
+                </div>
+                <div class="combatant" id="enemy-combat-display">
+                    <h2 id="enemy-name">Enemy</h2>
+                    <div id="enemy-image" class="image-placeholder">
+
+[Image of Enemy]
+</div>
+                    <p>HP: <span id="enemy-hp">?</span> / <span id="enemy-max-hp">?</span></p>
+                </div>
+            </div>
+            <div id="combat-log">
+                <p>Pertarungan dimulai!</p>
+            </div>
+            <div id="combat-actions">
+                <button id="btn-attack">Attack</button>
+                <button id="btn-guard">Guard</button>
+                <button id="btn-magic">Magic</button>
+            </div>
+            <div id="magic-menu" style="display: none;">
+                </div>
+        </div>
+
+        <div id="game-world-screen" class="screen">
+            <h2>Petualangan Berlanjut...</h2>
+            <p>Anda telah mengalahkan musuh. Apa yang akan Anda lakukan selanjutnya?</p>
+            <button id="btn-continue-adventure">Lanjut</button>
+            <button id="btn-open-inventory">Open Inventory</button>
+            <button id="btn-open-stats">Open Stats</button>
+        </div>
+
+        <div id="inventory-screen" class="modal-screen screen">
+            <div class="modal-content">
+                <h2>Inventory</h2>
+                <div class="inventory-layout">
+                    <div class="equipment-slots">
+                        <h3>Equipment</h3>
+                        <div class="slot" id="equip-head" data-slot="head">Head</div>
+                        <div class="slot" id="equip-torso" data-slot="torso">Torso</div>
+                        <div class="slot" id="equip-legging" data-slot="legging">Legging</div>
+                        <div class="slot" id="equip-boots" data-slot="boots">Boots</div>
+                        <div class="slot" id="equip-rightHand" data-slot="rightHand">Right Hand</div>
+                        <div class="slot" id="equip-leftHand" data-slot="leftHand">Left Hand</div>
+                        <div class="slot" id="equip-accessory1" data-slot="accessory1">Accessory 1</div>
+                        <div class="slot" id="equip-accessory2" data-slot="accessory2">Accessory 2</div>
+                    </div>
+                    <div id="inventory-bag" class="inventory-bag">
+                        <h3>Bag</h3>
+                        </div>
+                </div>
+                <button id="btn-close-inventory">Close</button>
+            </div>
+        </div>
+
+        <div id="stats-screen" class="modal-screen screen">
+            <div class="modal-content">
+                <h2>Stats</h2>
+                <p>Level: <span id="stat-level">1</span></p>
+                <p>XP: <span id="stat-xp">0</span> / <span id="stat-xp-next">100</span></p>
+                <p>Poin Stat Tersisa: <span id="stat-points">0</span></p>
+                <hr>
+                <div class="stat-row">
+                    <span>Strength: <span id="stat-str">10</span></span>
+                    <button class="btn-add-stat" data-stat="str">+</button>
+                </div>
+                <div class="stat-row">
+                    <span>Endurance: <span id="stat-end">10</span></span>
+                    <button class="btn-add-stat" data-stat="end">+</button>
+                </div>
+                <div class="stat-row">
+                    <span>Speed: <span id="stat-spd">10</span></span>
+                    <button class="btn-add-stat" data-stat="spd">+</button>
+                </div>
+                <div class="stat-row">
+                    <span>Magic: <span id="stat-mag">10</span></span>
+                    <button class="btn-add-stat" data-stat="mag">+</button>
+                </div>
+                <hr>
+                <button id="btn-close-stats">Close</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
